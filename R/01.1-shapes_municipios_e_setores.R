@@ -28,8 +28,11 @@ download_muni_setores <- function(ano, munis = "all") {
     
     
     # criar pasta do municipios
-    dir.create(sprintf("../../data-raw/municipios/%s", ano))  
-    dir.create(sprintf("../../data-raw/setores_censitarios/%s", ano))  
+    dir.create(sprintf("./R/data-raw/municipios/%s", ano), recursive = TRUE)  
+    dir.create(sprintf("./R/data-raw/setores_censitarios/%s", ano), recursive = TRUE)
+    # cria hierarquia completa, sem avisar se já existir
+    dir.create(sprintf("./R/data/municipios/%s", ano), recursive = TRUE)
+    dir.create(sprintf("./R/data/setores_censitarios/%s", ano), recursive = TRUE)
     
     
     # Download de arquivos - shapes dos municipios
@@ -48,10 +51,10 @@ download_muni_setores <- function(ano, munis = "all") {
 
 
     # salvar municipios
-    readr::write_rds(muni_sf, sprintf("../../data/municipios/%s/municipio_%s_%s.rds", ano, sigla_muni, ano), compress = 'gz')
+    readr::write_rds(muni_sf, sprintf("./R/data/municipios/%s/municipio_%s_%s.rds", ano, sigla_muni, ano), compress = 'gz')
     
     # salvar setores censitarios
-    readr::write_rds(ct_sf, sprintf("../../data/setores_censitarios/%s/setores_%s_%s.rds", ano, sigla_muni, ano), compress = 'gz')
+    readr::write_rds(ct_sf, sprintf("./R/data/setores_censitarios/%s/setores_%s_%s.rds", ano, sigla_muni, ano), compress = 'gz')
   }
   
   # 2. Aplica funcao ------------------------------------------

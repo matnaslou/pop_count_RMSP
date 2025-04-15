@@ -36,7 +36,8 @@ suppressMessages(library(h3jsr)) # h3 hex remotes::install_github("obrl-soil/h3j
 suppressMessages(library(bit64)) # viz large numbers
 suppressMessages(library(quantreg))
 suppressMessages(library(gtfstools))
-
+suppressMessages(library(rgeos))
+suppressMessages(library(maptools))
 
 
 # Cria data.frame com municipios do projeto
